@@ -5,13 +5,13 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace Connecting_CSharp_to_MySQL_using_LINQ.Models
 {
-    public partial class peopledbContext : DbContext
+    public partial class PeopleDbContext : DbContext
     {
-        public peopledbContext()
+        public PeopleDbContext()
         {
         }
 
-        public peopledbContext(DbContextOptions<peopledbContext> options)
+        public PeopleDbContext(DbContextOptions<PeopleDbContext> options)
             : base(options)
         {
         }

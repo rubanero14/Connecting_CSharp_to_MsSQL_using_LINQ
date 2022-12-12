@@ -10,37 +10,56 @@ namespace Connecting_CSharp_to_MySQL_using_LINQ.Controllers
     [ApiController]
     public class PeopleController : ControllerBase
     {
+        private readonly PeopleDbContext _dbcontext;
+        public PeopleController(PeopleDbContext _context) 
+        {
+            _dbcontext = _context;
+        }
+
         // GET: api/<PeopleController>
-       /* [HttpGet]
-        public IEnumerable<People> Get()
+        [HttpGet]
+        [Route("")]
+        public async Task<IActionResult> GetPeople() 
         {
-            List<People> people = new List<People>();
-            return people;
-        }*/
-
-  /*      // GET api/<PeopleController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
+            try
+            {
+                List<Person> people = _dbcontext.People.ToList();
+                if(people != null)
+                {
+                    return Ok(people);
+                }
+                else
+                {
+                    return Ok("The list of people is empty!");
+                }
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
-        // POST api/<PeopleController>
-        [HttpPost]
-        public void Post([FromBody] string value)
+        // GET: api/<PeopleController>/1
+        [HttpGet]
+        [Route("{id}")]
+        public async Task<IActionResult> GetPerson(int id)
         {
+            try
+            {
+                var person = _dbcontext.People.Where(x => x.Id == id).FirstOrDefault();
+                if (person != null)
+                {
+                    return Ok(person);
+                }
+                else
+                {
+                    return Ok("No surch person found on database record!");
+                }
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
-
-        // PUT api/<PeopleController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/<PeopleController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }*/
     }
 }

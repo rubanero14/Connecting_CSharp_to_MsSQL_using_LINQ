@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Connecting_CSharp_to_MySQL_using_LINQ.Migrations
 {
-    [DbContext(typeof(peopledbContext))]
+    [DbContext(typeof(PeopleDbContext))]
     [Migration("20221212141903_initial")]
     partial class initial
     {

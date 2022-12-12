@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Connecting_CSharp_to_MySQL_using_LINQ.Migrations
 {
-    [DbContext(typeof(peopledbContext))]
+    [DbContext(typeof(PeopleDbContext))]
     partial class peopledbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
