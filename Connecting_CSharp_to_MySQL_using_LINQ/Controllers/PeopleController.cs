@@ -10,10 +10,10 @@ namespace Connecting_CSharp_to_MySQL_using_LINQ.Controllers
     [ApiController]
     public class PeopleController : ControllerBase
     {
-        private readonly PeopleDbContext _dbcontext;
+        private readonly PeopleDbContext db;
         public PeopleController(PeopleDbContext _context) 
         {
-            _dbcontext = _context;
+            db = _context;
         }
 
         // GET: api/<PeopleController>
@@ -23,7 +23,7 @@ namespace Connecting_CSharp_to_MySQL_using_LINQ.Controllers
         {
             try
             {
-                List<Person> people = _dbcontext.People.ToList();
+                List<Person> people = db.People.ToList();
                 if(people != null)
                 {
                     return Ok(people);
@@ -46,7 +46,7 @@ namespace Connecting_CSharp_to_MySQL_using_LINQ.Controllers
         {
             try
             {
-                var person = _dbcontext.People.Where(x => x.Id == id).FirstOrDefault();
+                var person = db.People.Where(x => x.Id == id).FirstOrDefault();
                 if (person != null)
                 {
                     return Ok(person);
@@ -55,6 +55,25 @@ namespace Connecting_CSharp_to_MySQL_using_LINQ.Controllers
                 {
                     return Ok("No surch person found on database record!");
                 }
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        // POST api/<PeopleController>
+        [HttpPost]
+        public async Task<IActionResult> CreatePerson(string firstName, string lastName)
+        {
+            try
+            {
+                List<Person> people = db.People.ToList();
+                int id = people.Count() + 1;
+                var person = new Person(id, firstName, lastName);
+                db.People.Add(person);
+                db.SaveChanges();
+                return Ok(person);
             }
             catch (Exception ex)
             {
