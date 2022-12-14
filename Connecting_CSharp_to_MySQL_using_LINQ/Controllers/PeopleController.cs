@@ -62,7 +62,7 @@ namespace Connecting_CSharp_to_MsSQL_using_LINQ.Controllers
             }
         }
 
-        // POST api/<PeopleController>/Create
+        // POST: api/<PeopleController>/Create
         [HttpPost]
         [Route("Create")]
         public async Task<IActionResult> Create(string firstName, string lastName)
@@ -72,7 +72,7 @@ namespace Connecting_CSharp_to_MsSQL_using_LINQ.Controllers
                 var person = new Person(firstName, lastName);
                 db.People.Add(person);
                 db.SaveChanges();
-                return Ok(person);
+                return Ok($"Create successful for { person.FirstName } { person.LastName }!");
             }
             catch (Exception ex)
             {
@@ -80,6 +80,42 @@ namespace Connecting_CSharp_to_MsSQL_using_LINQ.Controllers
             }
         }
 
+        // POST: api/<PeopleController>/Update/1
+        [HttpPost]
+        [Route("Update/{id}")]
+        public async Task<IActionResult> Update(int id, string firstName, string lastName)
+        {
+            try
+            {
+                var person = db.People.Where(x => x.Id == id).FirstOrDefault();
+                person.FirstName = firstName;
+                person.LastName = lastName;
+                db.People.Update(person);
+                db.SaveChanges();
+                return Ok($"Update successful for { person.FirstName } { person.LastName }!");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
 
+        // POST: api/<PeopleController>/Delete/1
+        [HttpPost]
+        [Route("Delete/{id}")]
+        public async Task<IActionResult> DeleteById(int id)
+        {
+            try
+            {
+                var person = db.People.Where(x => x.Id == id).FirstOrDefault();
+                db.People.Remove(person);
+                db.SaveChanges();
+                return Ok($"Delete successful for {person.FirstName} {person.LastName}!");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
     }
 }
