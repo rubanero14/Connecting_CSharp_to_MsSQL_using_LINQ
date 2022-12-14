@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-namespace Connecting_CSharp_to_MySQL_using_LINQ.Models
+namespace Connecting_CSharp_to_MsSQL_using_LINQ.Models
 {
     public partial class PeopleDbContext : DbContext
     {

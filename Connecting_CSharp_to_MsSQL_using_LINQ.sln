@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33103.184
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Connecting_CSharp_to_MySQL_using_LINQ", "Connecting_CSharp_to_MySQL_using_LINQ\Connecting_CSharp_to_MySQL_using_LINQ.csproj", "{517A3CD6-DA79-4B6F-BD9D-61DCB5D23425}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Connecting_CSharp_to_MsSQL_using_LINQ", "Connecting_CSharp_to_MySQL_using_LINQ\Connecting_CSharp_to_MsSQL_using_LINQ.csproj", "{517A3CD6-DA79-4B6F-BD9D-61DCB5D23425}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,10 +1,10 @@
-﻿using Connecting_CSharp_to_MySQL_using_LINQ.Models;
+﻿using Connecting_CSharp_to_MsSQL_using_LINQ.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
-namespace Connecting_CSharp_to_MySQL_using_LINQ.Controllers
+namespace Connecting_CSharp_to_MsSQL_using_LINQ.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -19,7 +19,7 @@ namespace Connecting_CSharp_to_MySQL_using_LINQ.Controllers
         // GET: api/<PeopleController>
         [HttpGet]
         [Route("")]
-        public async Task<IActionResult> GetPeople() 
+        public async Task<IActionResult> Get() 
         {
             try
             {
@@ -42,7 +42,7 @@ namespace Connecting_CSharp_to_MySQL_using_LINQ.Controllers
         // GET: api/<PeopleController>/1
         [HttpGet]
         [Route("{id}")]
-        public async Task<IActionResult> GetPerson(int id)
+        public async Task<IActionResult> GetById(int id)
         {
             try
             {
@@ -62,15 +62,14 @@ namespace Connecting_CSharp_to_MySQL_using_LINQ.Controllers
             }
         }
 
-        // POST api/<PeopleController>
+        // POST api/<PeopleController>/Create
         [HttpPost]
-        public async Task<IActionResult> CreatePerson(string firstName, string lastName)
+        [Route("Create")]
+        public async Task<IActionResult> Create(string firstName, string lastName)
         {
             try
             {
-                List<Person> people = db.People.ToList();
-                int id = people.Count() + 1;
-                var person = new Person(id, firstName, lastName);
+                var person = new Person(firstName, lastName);
                 db.People.Add(person);
                 db.SaveChanges();
                 return Ok(person);
@@ -80,5 +79,7 @@ namespace Connecting_CSharp_to_MySQL_using_LINQ.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+
     }
 }

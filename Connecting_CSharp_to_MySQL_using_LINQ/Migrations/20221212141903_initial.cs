@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace Connecting_CSharp_to_MySQL_using_LINQ.Migrations
+namespace Connecting_CSharp_to_MsSQL_using_LINQ.Migrations
 {
     public partial class initial : Migration
     {

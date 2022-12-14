@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Connecting_CSharp_to_MySQL_using_LINQ.Models
+namespace Connecting_CSharp_to_MsSQL_using_LINQ.Models
 {
     public partial class Person
     {
@@ -9,9 +9,8 @@ namespace Connecting_CSharp_to_MySQL_using_LINQ.Models
         public string FirstName { get; set; } = null!;
         public string LastName { get; set; } = null!;
 
-        public Person(int id, string firstName, string lastName) 
+        public Person(string firstName, string lastName) 
         {
-            Id = id;
             FirstName = firstName;
             LastName = lastName;
         }

@@ -1,5 +1,5 @@
 // Importing files from Models folder
-using Connecting_CSharp_to_MySQL_using_LINQ.Models;
+using Connecting_CSharp_to_MsSQL_using_LINQ.Models;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
