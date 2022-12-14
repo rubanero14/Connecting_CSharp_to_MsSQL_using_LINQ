@@ -53,7 +53,7 @@ namespace Connecting_CSharp_to_MsSQL_using_LINQ.Controllers
                 }
                 else
                 {
-                    return Ok("No surch person found on database record!");
+                    return Ok("No such person found on database record!");
                 }
             }
             catch (Exception ex)
@@ -103,7 +103,7 @@ namespace Connecting_CSharp_to_MsSQL_using_LINQ.Controllers
         // POST: api/<PeopleController>/Delete/1
         [HttpPost]
         [Route("Delete/{id}")]
-        public async Task<IActionResult> DeleteById(int id)
+        public async Task<IActionResult> Delete(int id)
         {
             try
             {
