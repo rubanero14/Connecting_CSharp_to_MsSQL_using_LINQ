@@ -9,7 +9,7 @@ namespace Connecting_CSharp_to_MsSQL_using_LINQ.Models
         public string FirstName { get; set; } = null!;
         public string LastName { get; set; } = null!;
 
-        public Person(string firstName, string lastName) 
+        public Person(string firstName, string lastName)
         {
             FirstName = firstName;
             LastName = lastName;
