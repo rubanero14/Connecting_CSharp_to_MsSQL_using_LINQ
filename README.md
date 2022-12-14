@@ -1,1 +1,1 @@
-# Connecting_CSharp_to_MySQL_using_LINQ
+# Connecting_CSharp_to_MsSQL_using_LINQ
